@@ -13,10 +13,13 @@ import { SessionService } from './session/session.service';
 import { SessionController } from './session/session.controller';
 import { SessionRepository } from './session/session.repository';
 import { Session, SessionSchema } from './entities/session.entity';
+import { env } from 'process';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/progress-tracker'),
+    ConfigModule.forRoot({isGlobal: true}),
+    MongooseModule.forRoot(env.MONGODB_URI),
     MongooseModule.forFeature([
       {name: Excercise.name, schema: ExerciseSchema}, 
       {name: Session.name, schema: SessionSchema}
