@@ -11,8 +11,5 @@
         "src": "/(.*)",
         "dest": "/project-tracker/dist/main.js"
       }
-    ],
-    "env": {
-      "MONGODB_URI": "@mongodb_uri"
-    }
+    ]
   }
