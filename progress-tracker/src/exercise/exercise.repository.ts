@@ -2,8 +2,8 @@ import { NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { UUID } from "crypto";
 import { Model } from "mongoose";
-import { ExerciseDto } from "src/dtos/exercise.dto";
-import { Excercise } from "src/entities/exercise.entity";
+import { ExerciseDto } from "../dtos/exercise.dto";
+import { Excercise } from "../entities/exercise.entity";
 
 export class ExerciseRepository{
     constructor(@InjectModel(Excercise.name) private readonly exerciseModel: Model<Excercise>){}

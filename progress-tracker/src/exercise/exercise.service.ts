@@ -1,7 +1,7 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { UUID } from 'crypto';
 import { ExerciseRepository } from './exercise.repository';
-import { ExerciseDto } from 'src/dtos/exercise.dto';
+import { ExerciseDto } from '../dtos/exercise.dto';
 
 @Injectable()
 export class ExerciseService {

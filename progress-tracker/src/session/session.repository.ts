@@ -1,8 +1,8 @@
 import { InjectModel } from "@nestjs/mongoose";
 import { UUID } from "crypto";
 import { Model } from "mongoose";
-import { SessionDto } from "src/dtos/session.dto";
-import { Session } from "src/entities/session.entity";
+import { SessionDto } from "../dtos/session.dto";
+import { Session } from "../entities/session.entity";
 
 export class SessionRepository{
     constructor(@InjectModel(Session.name) private readonly sessionModel: Model<Session>){}

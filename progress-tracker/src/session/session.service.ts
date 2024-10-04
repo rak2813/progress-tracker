@@ -1,8 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { SessionDto } from 'src/dtos/session.dto';
+import { SessionDto } from '../dtos/session.dto';
 import { SessionRepository } from './session.repository';
 import { UUID } from 'crypto';
-import { BodyWeightDto } from 'src/dtos/bodyweight.dto';
 
 @Injectable()
 export class SessionService {

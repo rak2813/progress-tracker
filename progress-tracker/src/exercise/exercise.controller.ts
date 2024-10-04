@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { UUID } from 'crypto';
 import { ExerciseService } from './exercise.service';
-import { ExerciseDto } from 'src/dtos/exercise.dto';
+import { ExerciseDto } from '../dtos/exercise.dto';
 
 @Controller('exercise')
 export class ExerciseController {
