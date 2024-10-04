@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Session</h1>
+        <form id="sessionForm">
+            <input type="date" id="sessionDate" required>
+            <input type="number" id="bodyweight" placeholder="Body Weight (kg)" min="0" required>
+
+            <div id="workoutTypeContainer">
+                <div id="workoutType">
+                    <select id="workoutTypeSelect" required>
+                        <option value="" disabled selected>Select Workout Type</option>
+                        <option value="Push">Push</option>
+                        <option value="Pull">Pull</option>
+                        <option value="Arms">Arms</option>
+                        <option value="Legs">Legs</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="exercisesContainer"></div>
+            <button type="button" id="addExerciseButton">+ Add Exercise</button>
+            <button type="submit">Update Session</button>
+        </form>
+        <a href="home.html">Back to Home</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

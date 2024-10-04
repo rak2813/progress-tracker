@@ -1,0 +1,186 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container Styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Header Styling */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Link Styling */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* List Styling */
+ul {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Basic table styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures that the borders are collapsed into a single border */
+    margin-top: 20px;
+}
+
+/* Styling for table headers */
+th, td {
+    padding: 12px 15px; /* Add some padding inside cells */
+    border: 1px solid #ddd; /* Set the border for each cell */
+    text-align: left;
+}
+
+/* Add alternating row colors for clarity */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Make the header row stand out */
+th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+.exercise {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Add some spacing between set inputs */
+.set {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.set input {
+    flex: 1;
+}
+
+/* Add proper spacing between sets */
+.set + .set {
+    margin-top: 10px;
+}
+
+/* Add spacing between the exercise dropdown and buttons */
+.addSetButton, .deleteExerciseButton {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.addSetButton {
+    background-color: #28a745;
+}
+
+.addSetButton:hover {
+    background-color: #218838;
+}
+
+.deleteExerciseButton {
+    background-color: #dc3545;
+}
+
+.deleteExerciseButton:hover {
+    background-color: #c82333;
+}
+
+/* For consistency, keep the same margin for set delete buttons */
+.deleteSetButton {
+    background-color: #dc3545;
+    padding: 5px 10px;
+}
+
+.deleteSetButton:hover {
+    background-color: #c82333;
+}
+
