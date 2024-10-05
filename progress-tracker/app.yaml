@@ -1,0 +1,11 @@
+runtime: nodejs18
+instance_class: F1
+env: standard
+
+handlers:
+- url: /.*
+  script: auto
+
+env_variables:
+  MONGODB_URI: "mongodb+srv://user:progress123@progresstrackercluster.6f5z6.mongodb.net/progress-tracker?retryWrites=true&loadBalanced=false&replicaSet=atlas-mxwupf-shard-0&readPreference=primary&srvServiceName=mongodb&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1"
+  PORT: 8080
