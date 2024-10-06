@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { SessionDto } from '../dtos/session.dto';
 import { SessionService } from './session.service';
 import { UUID } from 'crypto';
@@ -30,5 +30,10 @@ export class SessionController {
     @Get('body-weight')
     async GetBodyWeightData(){
         return this.sessionService.GetBodyWeightData();
+    }
+
+    @Delete(':id')
+    async DeleteSession(@Param('id')id: UUID){
+        return this.sessionService.DeleteSession(id);
     }
 }

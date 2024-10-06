@@ -1,4 +1,5 @@
 const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
+// const API_BASE_URL = 'http://localhost';
 
 // // Logging a new session
 document.getElementById('sessionForm')?.addEventListener('submit', async function (event) {
@@ -53,7 +54,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     const addExerciseButton = document.getElementById('addExerciseButton');
 
     // Event listener for adding a new exercise
-    addExerciseButton.addEventListener('click', addExercise(exercisesContainer));
+    addExerciseButton.addEventListener('click', async function () {
+        await addExercise(exercisesContainer);  // Now, this will be called on click
+    });
 });
 
 // Function to save session data to the backend
@@ -105,50 +108,16 @@ async function populateSessionDetails() {
     const response2 = await fetch(`${API_BASE_URL}/exercise`);
     const availableExercises = await response2.json();
 
-    sessionData.workout.forEach(exercise => {
-        addExercise(exercisesContainer);
-        const exerciseDropdown = exercisesContainer.querySelector('select');
-        const setsContainer = exercisesContainer.querySelector('.setsContainer');
+    sessionData.workout.forEach(async exercise => {
+        const newExerciseDiv = await addExercise(exercisesContainer);
+        const exerciseDropdown = newExerciseDiv.querySelector('select');
+        const setsContainer = newExerciseDiv.querySelector('.setsContainer');
 
         // Populate exercise and sets
         exerciseDropdown.value = exercise.name;
 
-        exercise.sets.forEach(set => {
-            const setDiv = document.createElement('div');
-        setDiv.classList.add('set');
-
-        // Reps input
-        const repsInput = document.createElement('input');
-        repsInput.type = 'number';
-        repsInput.placeholder = 'Reps';
-        repsInput.min = 1;
-        repsInput.required = true;
-
-        // Weight input
-        const weightInput = document.createElement('input');
-        weightInput.type = 'number';
-        weightInput.placeholder = 'Weight (kg)';
-        weightInput.min = 1;
-        weightInput.required = true;
-
-        // Add delete set button
-        const deleteSetButton = document.createElement('button');
-        deleteSetButton.type = 'button';
-        deleteSetButton.textContent = '-';
-        deleteSetButton.classList.add('deleteSetButton');
-
-        // Append inputs and delete button to the set div
-        setDiv.appendChild(repsInput);
-        setDiv.appendChild(weightInput);
-        setDiv.appendChild(deleteSetButton);
-
-        // Append the set div to the sets container
-        setsContainer.appendChild(setDiv);
-
-        // Event listener for the "Delete Set" button
-        deleteSetButton.addEventListener('click', () => {
-            setsContainer.removeChild(setDiv);
-        });
+        exercise.sets.forEach(async set => {
+            const setDiv = await addSet(setsContainer);
             setDiv.querySelector('input[placeholder="Reps"]').value = set.reps;
             setDiv.querySelector('input[placeholder="Weight (kg)"]').value = set.weight;
         });
@@ -190,6 +159,26 @@ async function getSessions() {
             link.textContent = `${session.workoutType} - ${new Date(session.date).toDateString()}`; // Customize as needed
 
             li.appendChild(link);
+
+            const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.textContent = '-';
+        deleteButton.classList.add('deleteButton');
+        li.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', async () => {
+            const response = await fetch(`${API_BASE_URL}/session/${session._id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                sessionsList.removeChild(li);
+            } else {
+                console.error('Error deleting session:', response.statusText);
+            }
+        });
+
+            
             sessionsList.appendChild(li);
         });
 
@@ -224,6 +213,25 @@ async function getExercises() {
         const li = document.createElement('li');
         li.textContent = `${count++}. ${exercise.name}`;
         exerciseList.appendChild(li);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.textContent = '-';
+        deleteButton.classList.add('deleteButton');
+        li.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', async () => {
+            const response = await fetch(`${API_BASE_URL}/exercise/${exercise._id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                exerciseList.removeChild(li);
+            } else {
+                console.error('Error deleting exercise:', response.statusText);
+            }
+        });
+
     });
 }
 
@@ -276,16 +284,9 @@ document.getElementById('addExercise').addEventListener('submit', async (event) 
 });
 
 
-function addSet(setsContainer) {
+async function addSet(setsContainer) {
     const setDiv = document.createElement('div');
     setDiv.classList.add('set');
-
-    // Reps input
-    const repsInput = document.createElement('input');
-    repsInput.type = 'number';
-    repsInput.placeholder = 'Reps';
-    repsInput.min = 1;
-    repsInput.required = true;
 
     // Weight input
     const weightInput = document.createElement('input');
@@ -294,6 +295,13 @@ function addSet(setsContainer) {
     weightInput.min = 1;
     weightInput.required = true;
 
+    // Reps input
+    const repsInput = document.createElement('input');
+    repsInput.type = 'number';
+    repsInput.placeholder = 'Reps';
+    repsInput.min = 1;
+    repsInput.required = true;
+
     // Add delete set button
     const deleteSetButton = document.createElement('button');
     deleteSetButton.type = 'button';
@@ -301,8 +309,8 @@ function addSet(setsContainer) {
     deleteSetButton.classList.add('deleteSetButton');
 
     // Append inputs and delete button to the set div
-    setDiv.appendChild(repsInput);
     setDiv.appendChild(weightInput);
+    setDiv.appendChild(repsInput);
     setDiv.appendChild(deleteSetButton);
 
     // Append the set div to the sets container
@@ -312,6 +320,7 @@ function addSet(setsContainer) {
     deleteSetButton.addEventListener('click', () => {
         setsContainer.removeChild(setDiv);
     });
+    return setDiv;
 }
 
 async function addExercise(exercisesContainer) {
@@ -361,6 +370,7 @@ async function addExercise(exercisesContainer) {
     deleteExerciseButton.addEventListener('click', () => {
         exercisesContainer.removeChild(exerciseDiv);
     });
+    return exerciseDiv;
 }
 
 

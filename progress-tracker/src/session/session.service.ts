@@ -36,5 +36,12 @@ export class SessionService {
         return response;
     }
 
+    async DeleteSession(id: UUID) {
+        var response = await this.sessionRepository.GetSessionById(id);
+        if(response==null) throw new NotFoundException("Cannot find session.");
+
+        return this.sessionRepository.DeleteSession(id);
+    }
+
 
 }

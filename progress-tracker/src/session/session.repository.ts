@@ -24,4 +24,8 @@ export class SessionRepository{
         return await this.sessionModel.findByIdAndUpdate(id, sessionDto);
     }
 
+    async DeleteSession(id: UUID) {
+        return await this.sessionModel.findByIdAndDelete(id);
+    }
+
 }
