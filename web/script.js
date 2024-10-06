@@ -1,3 +1,5 @@
+const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
+
 // // Logging a new session
 document.getElementById('sessionForm')?.addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent form submission
@@ -59,14 +61,14 @@ async function saveSession(sessionData) {
     const sessionId = getSessionIdFromUrl();
     let response;
     if(sessionId== null){
-    response = await fetch('http://localhost:3000/session', { // Adjust the URL as needed
+    response = await fetch(`${API_BASE_URL}/session`, { // Adjust the URL as needed
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(sessionData),
     });}else{
-        response = await fetch(`http://localhost:3000/session/${sessionId}`, { // Adjust the URL as needed
+        response = await fetch(`${API_BASE_URL}/session/${sessionId}`, { // Adjust the URL as needed
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,7 +92,7 @@ function getSessionIdFromUrl() {
 //Update session
 async function populateSessionDetails() {
     const sessionId = getSessionIdFromUrl(); // Get the session ID from the URL
-    const response = await fetch(`http://localhost:3000/session/${sessionId}`); // Fetch session data
+    const response = await fetch(`${API_BASE_URL}/session/${sessionId}`); // Fetch session data
     const sessionData = await response.json(); // Parse JSON response
 
     // Populate form fields with session data
@@ -100,7 +102,7 @@ async function populateSessionDetails() {
     document.querySelector('#workoutType select').value = sessionData.workoutType;
 
     const exercisesContainer = document.getElementById('exercisesContainer');
-    const response2 = await fetch('http://localhost:3000/exercise');
+    const response2 = await fetch(`${API_BASE_URL}/exercise`);
     const availableExercises = await response2.json();
 
     sessionData.workout.forEach(exercise => {
@@ -162,7 +164,7 @@ document.addEventListener('DOMContentLoaded', populateSessionDetails);
 // Fetch and list all sessions
 async function getSessions() {
     try {
-        const response = await fetch('http://localhost:3000/session'); // Adjust the URL to your backend
+        const response = await fetch(`${API_BASE_URL}/session`); // Adjust the URL to your backend
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -212,7 +214,7 @@ if (window.location.pathname.includes('get-sessions.html')) {
 
 // Get exercises and display them
 async function getExercises() {
-    const response = await fetch('http://localhost:3000/exercise'); // Adjust the URL as needed
+    const response = await fetch(`${API_BASE_URL}/exercise`); // Adjust the URL as needed
     const exercises = await response.json();
 
     const exerciseList = document.getElementById('exerciseList');
@@ -248,7 +250,7 @@ document.getElementById('addExercise').addEventListener('submit', async (event) 
 
 
     try {
-        const response = await fetch('http://localhost:3000/exercise', { // Adjust the URL as needed
+        const response = await fetch(`${API_BASE_URL}/exercise`, { // Adjust the URL as needed
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -320,7 +322,7 @@ async function addExercise(exercisesContainer) {
     const exerciseDropdown = document.createElement('select');
     exerciseDropdown.required = true;
     // List of available exercises
-    const response = await fetch('http://localhost:3000/exercise');
+    const response = await fetch(`${API_BASE_URL}/exercise`);
     const availableExercises = await response.json();
     exerciseDropdown.innerHTML = `
         <option value="" disabled selected>Select Exercise</option>
