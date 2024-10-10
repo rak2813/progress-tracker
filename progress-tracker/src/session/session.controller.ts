@@ -37,9 +37,9 @@ export class SessionController {
         return this.sessionService.DeleteSession(id);
     }
 
-    @Post('manual')
-    async UpdateExerciseStatsManually(){
-        return this.sessionService.UpdateAllExerciseStats();
-        // return;
-    }
+    // @Post('manual')
+    // async UpdateExerciseStatsManually(){
+    //     return this.sessionService.UpdateAllExerciseStats();
+    //     // return;
+    // }
 }
