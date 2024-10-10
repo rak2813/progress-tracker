@@ -214,6 +214,12 @@ async function getExercises() {
         li.textContent = `${count++}. ${exercise.name}`;
         exerciseList.appendChild(li);
 
+        const maxText = document.createTextNode(` | Max: ${exercise.maxWeight || '0'} kg x ${exercise.maxReps || '0'}`);
+        const lastText = document.createTextNode(` | Last: ${exercise.lastWeight || '0'} kg x ${exercise.lastReps || '0'}`);
+        // Append the text node to the list item
+        li.appendChild(maxText);
+        li.appendChild(lastText);
+
         const deleteButton = document.createElement('button');
         deleteButton.type = 'button';
         deleteButton.textContent = '-';
