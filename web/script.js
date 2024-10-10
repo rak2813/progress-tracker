@@ -225,23 +225,23 @@ async function getExercises() {
         li.appendChild(maxText);
         li.appendChild(lastText);
 
-        const deleteButton = document.createElement('button');
-        deleteButton.type = 'button';
-        deleteButton.textContent = '-';
-        deleteButton.classList.add('deleteButton');
-        li.appendChild(deleteButton);
+        // const deleteButton = document.createElement('button');
+        // deleteButton.type = 'button';
+        // deleteButton.textContent = '-';
+        // deleteButton.classList.add('deleteButton');
+        // li.appendChild(deleteButton);
 
-        deleteButton.addEventListener('click', async () => {
-            const response = await fetch(`${API_BASE_URL}/exercise/${exercise._id}`, {
-                method: 'DELETE',
-            });
+        // deleteButton.addEventListener('click', async () => {
+        //     const response = await fetch(`${API_BASE_URL}/exercise/${exercise._id}`, {
+        //         method: 'DELETE',
+        //     });
 
-            if (response.ok) {
-                exerciseList.removeChild(li);
-            } else {
-                console.error('Error deleting exercise:', response.statusText);
-            }
-        });
+        //     if (response.ok) {
+        //         exerciseList.removeChild(li);
+        //     } else {
+        //         console.error('Error deleting exercise:', response.statusText);
+        //     }
+        // });
 
     });
 }
