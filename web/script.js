@@ -53,10 +53,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     const exercisesContainer = document.getElementById('exercisesContainer');
     const addExerciseButton = document.getElementById('addExerciseButton');
 
-    // Event listener for adding a new exercise
-    addExerciseButton.addEventListener('click', async function () {
-        await addExercise(exercisesContainer);  // Now, this will be called on click
-    });
+    if (exercisesContainer && addExerciseButton) {
+        // Event listener for adding a new exercise
+        addExerciseButton.addEventListener('click', async function () {
+            await addExercise(exercisesContainer); 
+        });}
 });
 
 // Function to save session data to the backend
@@ -127,7 +128,7 @@ async function populateSessionDetails() {
 }
 
 // Call populateSessionDetails when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', populateSessionDetails);
+// document.addEventListener('DOMContentLoaded', populateSessionDetails);
 
 
 // Fetch and list all sessions
@@ -200,6 +201,10 @@ if (window.location.pathname.includes('get-sessions.html')) {
     window.onload = getSessions;
 }
 
+if(window.location.pathname.includes('session-detail.html')){
+    window.onload = populateSessionDetails;
+}
+
 
 // Get exercises and display them
 async function getExercises() {
@@ -249,7 +254,8 @@ if (window.location.pathname.includes('get-exercises.html')) {
     window.onload = getExercises;
 }
 
-document.getElementById('addExercise').addEventListener('submit', async (event) => {
+if(window.location.pathname.includes('add-exercise.html')){document.getElementById('addExercise').addEventListener('submit', async (event) => {
+
     event.preventDefault(); // Prevent the form from submitting the default way
 
     // Get values from the form
@@ -287,7 +293,7 @@ document.getElementById('addExercise').addEventListener('submit', async (event) 
 
     // Clear the form
     document.getElementById('addExercise').reset();
-});
+});}
 
 
 async function addSet(setsContainer) {

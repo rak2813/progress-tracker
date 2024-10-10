@@ -8,6 +8,18 @@ export class Excercise extends Document{
 
     @Prop()
     name: string
+
+    @Prop()
+    maxWeight: number
+
+    @Prop()
+    maxReps: number
+
+    @Prop()
+    lastWeight: number
+
+    @Prop()
+    lastReps: number
 }
 export const ExerciseSchema = SchemaFactory.createForClass(Excercise);
 

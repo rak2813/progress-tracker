@@ -36,4 +36,10 @@ export class SessionController {
     async DeleteSession(@Param('id')id: UUID){
         return this.sessionService.DeleteSession(id);
     }
+
+    @Post('manual')
+    async UpdateExerciseStatsManually(){
+        return this.sessionService.UpdateAllExerciseStats();
+        // return;
+    }
 }

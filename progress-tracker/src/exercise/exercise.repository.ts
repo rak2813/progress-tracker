@@ -9,7 +9,7 @@ export class ExerciseRepository{
     constructor(@InjectModel(Excercise.name) private readonly exerciseModel: Model<Excercise>){}
 
     async GetExercises(): Promise<Excercise[]>{
-        return await this.exerciseModel.find().exec();
+        return await this.exerciseModel.find().sort({name: 1}).exec();
     }
 
     async GetExerciseByName(name: string): Promise<Excercise>{
@@ -23,5 +23,18 @@ export class ExerciseRepository{
 
     async DeleteExercise(id: UUID): Promise<boolean>{
         return await this.exerciseModel.findByIdAndDelete(id);
+    }
+
+    async UpdateExercise(exerciseEntity: Excercise){
+        var id = exerciseEntity._id.toString();
+        var response = await this.exerciseModel.findById(id);
+        if(response==null) throw new NotFoundException("Cannot find exercise.");
+
+        return await this.exerciseModel.findByIdAndUpdate(id, {$set: {
+            maxWeight: exerciseEntity.maxWeight,
+            maxReps: exerciseEntity.maxReps,
+            lastWeight: exerciseEntity.lastWeight,
+            lastReps: exerciseEntity.lastReps
+        }});
     }
 }
