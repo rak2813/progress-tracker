@@ -1,5 +1,5 @@
-// const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
-const API_BASE_URL = 'http://localhost';
+const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
+// const API_BASE_URL = 'http://localhost';
 
 // // Logging a new session
 document.getElementById('sessionForm')?.addEventListener('submit', async function (event) {
