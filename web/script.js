@@ -1,5 +1,5 @@
-const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
-// const API_BASE_URL = 'http://localhost';
+// const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
+const API_BASE_URL = 'http://localhost';
 
 // // Logging a new session
 document.getElementById('sessionForm')?.addEventListener('submit', async function (event) {
@@ -116,6 +116,27 @@ async function populateSessionDetails() {
 
         // Populate exercise and sets
         exerciseDropdown.value = exercise.name;
+        const maxWeight = availableExercises.find(ex => ex.name === exercise.name).maxWeight;
+        const maxWeightReps = availableExercises.find(ex => ex.name === exercise.name).maxReps;
+        const lastWeight = availableExercises.find(ex => ex.name === exercise.name).lastWeight;
+        const lastWeightReps = availableExercises.find(ex => ex.name === exercise.name).lastReps;
+        const maxWeightNode = document.createTextNode(`Max: ${maxWeight}kg x ${maxWeightReps}`);
+        const lastWeightNode = document.createTextNode(` | Last: ${lastWeight}kg x ${lastWeightReps}`);
+        newExerciseDiv.appendChild(maxWeightNode);
+        newExerciseDiv.appendChild(lastWeightNode);
+
+        exerciseDropdown.addEventListener('change', async () => {
+            maxWeightNode.deleteData(0, maxWeightNode.length);
+            lastWeightNode.deleteData(0, lastWeightNode.length);
+
+            const selectedExercise = exerciseDropdown.value;
+            maxWeight = availableExercises.find(ex => ex.name === selectedExercise.name).maxWeight;
+            maxWeightReps = availableExercises.find(ex => ex.name === selectedExercise.name).maxReps;
+            lastWeight = availableExercises.find(ex => ex.name === selectedExercise.name).lastWeight;
+            lastWeightReps = availableExercises.find(ex => ex.name === selectedExercise.name).lastReps;
+        });
+
+        
 
         exercise.sets.forEach(async set => {
             const setDiv = await addSet(setsContainer);
@@ -201,9 +222,17 @@ if (window.location.pathname.includes('get-sessions.html')) {
     window.onload = getSessions;
 }
 
-if(window.location.pathname.includes('session-detail.html')){
-    window.onload = populateSessionDetails;
+// if(window.location.pathname.includes('session-detail.html')){
+//     window.onload = populateSessionDetails;
+// }
+
+if (window.location.pathname.includes('session-detail.html')) {
+    window.onload = () => {
+        populateSessionDetails(); // Call function every time the page loads or refreshes
+    };
 }
+
+
 
 
 // Get exercises and display them
@@ -302,16 +331,14 @@ async function addSet(setsContainer) {
 
     // Weight input
     const weightInput = document.createElement('input');
-    weightInput.type = 'number';
+    weightInput.type = 'float';
     weightInput.placeholder = 'Weight (kg)';
-    weightInput.min = 1;
     weightInput.required = true;
 
     // Reps input
     const repsInput = document.createElement('input');
     repsInput.type = 'number';
     repsInput.placeholder = 'Reps';
-    repsInput.min = 1;
     repsInput.required = true;
 
     // Add delete set button
@@ -350,6 +377,31 @@ async function addExercise(exercisesContainer) {
         ${availableExercises.map(exercise => `<option value="${exercise.name}">${exercise.name}</option>`).join('')}
     `;
     exerciseDiv.appendChild(exerciseDropdown);
+
+    exerciseDropdown.addEventListener('change', async () => {
+        const selectedExercise = exerciseDropdown.value;
+    
+        // Remove any existing stats wrapper before adding new data
+        const existingStats = exerciseDiv.querySelector('.exercise-stats');
+        if (existingStats) {
+            exerciseDiv.removeChild(existingStats);
+        }
+    
+        const exercise = availableExercises.find(exercise => exercise.name === selectedExercise);
+        if (exercise) {
+            // Create a wrapper to hold the max and last weight info
+            const statsWrapper = document.createElement('div');
+            statsWrapper.classList.add('exercise-stats');
+    
+            const maxWeight = document.createTextNode(`Max: ${exercise.maxWeight}kg x ${exercise.maxReps}`);
+            const lastWeight = document.createTextNode(` | Last: ${exercise.lastWeight}kg x ${exercise.lastReps}`);
+    
+            statsWrapper.appendChild(maxWeight);
+            statsWrapper.appendChild(lastWeight);
+            exerciseDiv.appendChild(statsWrapper);
+        }
+    });
+    
 
     // Add container for sets
     const setsContainer = document.createElement('div');

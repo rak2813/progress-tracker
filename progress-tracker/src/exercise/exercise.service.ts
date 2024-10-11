@@ -18,7 +18,10 @@ export class ExerciseService {
     async AddExercise(exerciseDto: ExerciseDto) {
         var response = await this.exerciseRepository.GetExerciseByName(exerciseDto.name);
         if(response != null) throw new ForbiddenException("Exercise already exists.");
-        
+        exerciseDto.maxWeight = 0;
+        exerciseDto.maxReps = 0;
+        exerciseDto.lastWeight = 0;
+        exerciseDto.lastReps = 0;
         return await this.exerciseRepository.AddExercise(exerciseDto);
     }
 

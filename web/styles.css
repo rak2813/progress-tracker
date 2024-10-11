@@ -5,72 +5,15 @@
     box-sizing: border-box;
 }
 
-
-/* Body Styling */
-/* body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-}
-
-/* Container Styling */
-/* .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}  */
-
 select {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #555; /* Dark border */
     border-radius: 4px;
     font-size: 16px;
+    background-color: #333; /* Dark background */
+    color: #fff; /* Light text */
+    margin-bottom: 10px;
 }
-
-/* Header Styling */
-/* h1, h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-} */
-
-/* Link Styling */
-/* a {
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #3498db;
-    font-weight: bold;
-}
-
-a:hover {
-    text-decoration: underline;
-} */
-
-a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 15px;                            /* Added padding for better click area */
-    text-decoration: none;
-    color: #3498db;                                /* Primary link color */
-    font-weight: bold;
-    border-radius: 5px;                            /* Slightly rounded corners */
-    background-color: rgba(52, 152, 219, 0.1);     /* Light background color for contrast */
-    transition: background-color 0.3s ease,        /* Smooth transition for background color */
-                color 0.3s ease;                   /* Smooth transition for text color */
-}
-
-a:hover {
-    text-decoration: none;
-    background-color: rgba(52, 152, 219, 0.3);     /* Darker background on hover */
-    color: #2980b9;                                /* Darker link color on hover */
-}
-
 
 /* Form Styling */
 form {
@@ -79,65 +22,16 @@ form {
     gap: 15px;
 }
 
-input[type="text"], input[type="number"], input[type="date"] {
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="float"] {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #555; /* Dark border */
     border-radius: 4px;
     font-size: 16px;
-}
-
-button {
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* .deleteButton {
-    padding: 5px;
-    float: right;
-    background-color: #f62424;
-    color: white;
-    border: 1px solid #f62424;
-    border-radius: 1px;
-    cursor: pointer;
-    font-size: 15px;
-} */
-
-.deleteButton {
-    padding: 5px 10px;                  /* Increased padding for better clickability */
-    float: right;                       /* Float to the right */
-    background-color: #f74242;          /* Red background */
-    color: white;                       /* White text */
-    border: none;                       /* Remove border */
-    border-radius: 5px;                 /* Rounded corners */
-    cursor: pointer;                    /* Pointer on hover */
-    font-size: 15px;                    /* Font size */
-    transition: background-color 0.3s,  /* Smooth background change */
-                transform 0.2s ease-in; /* Add a slight transformation effect */
-}
-
-.deleteButton:hover {
-    background-color: #d41d1d;          /* Darker red on hover */
-    transform: scale(1.05);             /* Slightly grow the button on hover */
-}
-
-.deleteButton:active {
-    background-color: #b31515;          /* Even darker red when clicked */
-    transform: scale(1);                /* Reset scale on click */
-}
-
-.deleteButton:focus {
-    outline: none;                      /* Remove default browser focus outline */
-    box-shadow: 0 0 5px 2px rgba(246, 36, 36, 0.5); /* Add subtle focus shadow */
-}
-
-
-button:hover {
-    background-color: #2980b9;
+    background-color: #333; /* Dark background */
+    color: rgb(255, 255, 255);; /* Light text */
 }
 
 /* List Styling */
@@ -147,31 +41,23 @@ ul {
     padding: 0;
 }
 
-/* li {
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-} */
-
 li {
-    padding: 15px;                              /* Increased padding for better spacing */
-    background-color: #ffffff;                  /* Light white background for contrast */
-    border: 1px solid #ddd;                     /* Light border for definition */
-    border-radius: 8px;                         /* Slightly more rounded corners */
-    margin-bottom: 15px;                        /* More space between list items */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
-    transition: background-color 0.3s,          /* Smooth background transition */
-                box-shadow 0.3s;                /* Smooth shadow transition */
-    font-family: sans-serif;
+    padding: 15px; /* Increased padding for better spacing */
+    background-color: #1e1e1e; /* Dark background */
+    border: 1px solid #333; /* Dark border */
+    font-weight: bold;
+    border-radius: 8px; /* Slightly more rounded corners */
+    margin-bottom: 15px; /* More space between list items */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s,
+                box-shadow 0.3s; /* Smooth background and shadow transition */
+    color: #ffffff; /* Light text color */
 }
 
 li:hover {
-    background-color: #f1f1f1;                  /* Light gray background on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Slightly darker shadow on hover */
+    background-color: #2a2a2a; /* Slightly lighter dark background on hover */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15); /* Slightly darker shadow on hover */
 }
-
 
 /* Media Queries for Responsiveness */
 @media (max-width: 600px) {
@@ -185,32 +71,35 @@ table {
     width: 100%;
     border-collapse: collapse; /* Ensures that the borders are collapsed into a single border */
     margin-top: 20px;
+    background-color: #1e1e1e; /* Dark background for the table */
 }
 
 /* Styling for table headers */
-th, td {
+th,
+td {
     padding: 12px 15px; /* Add some padding inside cells */
-    border: 1px solid #ddd; /* Set the border for each cell */
+    border: 1px solid #555; /* Dark border for cells */
     text-align: left;
+    color: #ffffff; /* Light text */
 }
 
 /* Add alternating row colors for clarity */
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #2a2a2a; /* Slightly lighter background for even rows */
 }
 
 /* Make the header row stand out */
 th {
-    background-color: #f8f8f8;
+    background-color: #333; /* Darker background for header */
     font-weight: bold;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #555; /* Dark border for header bottom */
 }
 
 .exercise {
     margin-bottom: 20px;
     padding: 10px;
-    background-color: #f1f1f1;
-    border: 1px solid #ddd;
+    background-color: #2a2a2a; /* Dark background for exercises */
+    border: 1px solid #333; /* Dark border */
     border-radius: 5px;
 }
 
@@ -224,6 +113,9 @@ th {
 
 .set input {
     flex: 1;
+    background-color: #333; /* Dark input background */
+    color: #fff; /* Light text */
+    border: 1px solid #555; /* Dark border */
 }
 
 /* Add proper spacing between sets */
@@ -231,82 +123,83 @@ th {
     margin-top: 10px;
 }
 
-/* Add spacing between the exercise dropdown and buttons */
-.addSetButton, .deleteExerciseButton {
-    margin-top: 10px;
-    margin-right: 10px;
-}
-
-.addSetButton {
-    background-color: #28a745;
-}
-
-.addSetButton:hover {
-    background-color: #218838;
-}
-
-.deleteExerciseButton {
-    background-color: #dc3545;
-}
-
-.deleteExerciseButton:hover {
-    background-color: #c82333;
-}
-
-/* For consistency, keep the same margin for set delete buttons */
-.deleteSetButton {
-    background-color: #dc3545;
-    padding: 5px 10px;
-}
-
-.deleteSetButton:hover {
-    background-color: #c82333;
-}
-
 body {
-    font-family: sans-serif, sans-serif;                  /* Use a modern font */
-    background-color: #f0f0f0;                      /* Light background for contrast */
+    font-family: sans-serif, sans-serif; /* Use a modern font */
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Light text */
     margin: 0;
     padding: 20px;
 }
 
 .container {
-    max-width: 800px;                               /* Center the content */
-    margin: 0 auto;                                 /* Center horizontally */
+    max-width: 800px; /* Center the content */
+    margin: 0 auto; /* Center horizontally */
     padding: 20px;
-    background-color: #ffffff;                      /* White background for the content area */
-    border-radius: 8px;                             /* Rounded corners for the container */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);     /* Subtle shadow for depth */
+    background-color: #1e1e1e; /* Dark background for the container */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Subtle shadow for depth */
 }
 
-h1,h2 {
-    color: #000000;                                    /* Darker color for the heading */
-    text-align: center;                             /* Center the heading */
+h1,
+h2 {
+    color: rgb(255, 255, 255);; /* Light text for headings */
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px;
 }
 
 .nav-list {
-    list-style: none;                               /* Remove default list styles */
-    padding: 0;                                    /* Remove default padding */
-    text-align: center;                            /* Center the list items */
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    text-align: center; /* Center the list items */
 }
 
 .nav-list li {
-    display: inline-block;                          /* Display links inline */
-    margin: 10px;                                  /* Spacing between links */
+    display: inline-block; /* Display links inline */
+    margin: 10px; /* Spacing between links */
 }
 
 .nav-list a {
-    display: inline-block;                          /* Make links block elements */
-    padding: 10px 20px;                            /* Padding for better click area */
-    text-decoration: none;                          /* Remove underline */
-    color: #3498db;                                /* Link color */
-    border: 2px solid transparent;                  /* Border for hover effect */
-    border-radius: 5px;                            /* Rounded corners */
+    display: inline-block; /* Make links block elements */
+    padding: 10px 20px; /* Padding for better click area */
+    text-decoration: none; /* Remove underline */
+    color: rgb(195, 255, 0);; /* Light link color */
+    border: 5px ; /* Border for hover effect */
+    border-radius: 5px; /* Rounded corners */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition effects */
 }
 
 .nav-list a:hover {
-    background-color: rgba(52, 152, 219, 0.2);     /* Light background on hover */
-    color: #2980b9;                                /* Darker link color on hover */                     /* Show border on hover */
+    background-color: rgba(0, 0, 0, 0.2); /* Light background on hover */
+    color: rgb(195, 255, 0);; /* Darker link color on hover */
 }
+
+/* Exercise stats */
+.exercise-stats {
+    margin-top: 10px; /* Adds space above the stats */
+    padding: 5px; /* Adds space inside the div around the text */
+}
+
+a, button, .addSetButton, .deleteExerciseButton, .deleteButton {
+    padding: 10px 15px;
+    background-color: #000000; /* Purple button */
+    color: rgb(195, 255, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: background-color 0.3s ease,
+                color 0.3s ease; /* Smooth transition for background color */
+}
+
+a:hover,button:hover {
+    background-color: rgb(42, 43, 41);; /* Darker purple on hover */
+}
+
+button[type = "submit"] {
+    margin-bottom: 30px;
+}
+
 
