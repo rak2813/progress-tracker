@@ -60,6 +60,8 @@ export class SessionService {
                 if(set.weight > sessionMaxWeight){
                     sessionMaxWeight = set.weight;
                     sessionMaxWeightReps = set.reps;
+                }else if(set.weight == sessionMaxWeight && set.reps > sessionMaxWeightReps){
+                    sessionMaxWeightReps = set.reps;
                 }
             })
 
@@ -71,6 +73,8 @@ export class SessionService {
 
             if(sessionMaxWeight > exercise.maxWeight){
                 exercise.maxWeight = sessionMaxWeight;
+                exercise.maxReps = sessionMaxWeightReps;
+            }else if(sessionMaxWeight == exercise.maxWeight && sessionMaxWeightReps > exercise.maxReps){
                 exercise.maxReps = sessionMaxWeightReps;
             }
             await this.exerciseRepository.UpdateExercise(exercise);
