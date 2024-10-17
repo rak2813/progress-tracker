@@ -8,7 +8,7 @@ export class SessionRepository{
     constructor(@InjectModel(Session.name) private readonly sessionModel: Model<Session>){}
 
     async GetAllSessions() {
-        return this.sessionModel.find().exec();
+        return this.sessionModel.find().sort({date: -1}).exec();
     }
 
     async GetSessionById(id:UUID){
