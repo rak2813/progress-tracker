@@ -16,6 +16,10 @@ export class ExerciseRepository{
         return await this.exerciseModel.findOne({name}).exec();
     }
 
+    async GetExerciseById(id: string): Promise<Excercise>{
+        return await this.exerciseModel.findById(id);
+    }
+
     async AddExercise(exerciseDto: ExerciseDto): Promise<Excercise> {
         const newExercise = new this.exerciseModel(exerciseDto);
         return newExercise.save();

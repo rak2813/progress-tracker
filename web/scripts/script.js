@@ -1,7 +1,7 @@
 const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
 // const API_BASE_URL = 'http://localhost';
 
-// // Logging a new session
+// Logging a new session
 document.getElementById('sessionForm')?.addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent form submission
 
@@ -61,32 +61,32 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 // Function to save session data to the backend
-async function saveSession(sessionData) {
-    const sessionId = getSessionIdFromUrl();
-    let response;
-    if(sessionId== null){
-    response = await fetch(`${API_BASE_URL}/session`, { // Adjust the URL as needed
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(sessionData),
-    });}else{
-        response = await fetch(`${API_BASE_URL}/session/${sessionId}`, { // Adjust the URL as needed
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(sessionData),
-        });
-    }
+// async function saveSession(sessionData) {
+//     const sessionId = getSessionIdFromUrl();
+//     let response;
+//     if(sessionId== null){
+//     response = await fetch(`${API_BASE_URL}/session`, { // Adjust the URL as needed
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(sessionData),
+//     });}else{
+//         response = await fetch(`${API_BASE_URL}/session/${sessionId}`, { // Adjust the URL as needed
+//             method: 'PUT',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(sessionData),
+//         });
+//     }
 
-    if (response.ok) {
-        console.log('Session saved successfully!');
-    } else {
-        console.error('Error saving session:', response.statusText);
-    }
-}
+//     if (response.ok) {
+//         console.log('Session saved successfully!');
+//     } else {
+//         console.error('Error saving session:', response.statusText);
+//     }
+// }
 
 function getSessionIdFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -172,8 +172,10 @@ async function getSessions() {
         }
 
         // Loop through each session and add it as a clickable link
+        var count = 1;
         sessions.forEach((session) => {
             const li = document.createElement('li');
+            li.textContent = `${count++}. `;
 
             // Create a link element
             const link = document.createElement('a');
@@ -245,14 +247,22 @@ async function getExercises() {
     var count = 1;
     exercises.forEach((exercise) => {
         const li = document.createElement('li');
-        li.textContent = `${count++}. ${exercise.name}`;
+        li.textContent = `${count++}. `;
         exerciseList.appendChild(li);
+        const exButton = document.createElement('a');
+        exButton.href = `data.html?exerciseId=${exercise._id}`;
+        exButton.textContent = exercise.name;
+        li.appendChild(exButton);
+
+        const textContainer = document.createElement('span');
+        textContainer.classList.add('textContainer');
 
         const maxText = document.createTextNode(` | Max: ${exercise.maxWeight || '0'} kg x ${exercise.maxReps || '0'}`);
         const lastText = document.createTextNode(` | Last: ${exercise.lastWeight || '0'} kg x ${exercise.lastReps || '0'}`);
-        // Append the text node to the list item
-        li.appendChild(maxText);
-        li.appendChild(lastText);
+
+        textContainer.appendChild(maxText);
+        textContainer.appendChild(lastText);
+        li.appendChild(textContainer);
 
         // const deleteButton = document.createElement('button');
         // deleteButton.type = 'button';

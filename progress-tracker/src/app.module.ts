@@ -15,6 +15,8 @@ import { SessionRepository } from './session/session.repository';
 import { Session, SessionSchema } from './entities/session.entity';
 import { env } from 'process';
 import { ConfigModule } from '@nestjs/config';
+import { DataController } from './data/data.controller';
+import { DataService } from './data/data.service';
 
 @Module({
   imports: [
@@ -25,8 +27,8 @@ import { ConfigModule } from '@nestjs/config';
       {name: Session.name, schema: SessionSchema}
     ])
   ],
-  controllers: [AppController, UserController, ExerciseController, SessionController],
-  providers: [AppService, UserService, UserRepository, ExerciseService, ExerciseRepository, SessionService, SessionRepository],
+  controllers: [AppController, UserController, ExerciseController, SessionController, DataController],
+  providers: [AppService, UserService, UserRepository, ExerciseService, ExerciseRepository, SessionService, SessionRepository, DataService],
 })
 export class AppModule {}
 

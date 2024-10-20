@@ -202,4 +202,15 @@ button[type = "submit"] {
     margin-bottom: 30px;
 }
 
+.listItem {
+    cursor: pointer;
+}
+
+.textContainer {
+    flex-grow: 1;
+    text-align: right;
+}
+
+
+
 
