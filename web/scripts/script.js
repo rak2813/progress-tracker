@@ -9,7 +9,6 @@ document.getElementById('sessionForm')?.addEventListener('submit', async functio
     const sessionDate = document.getElementById('sessionDate').value;
     const bodyweight = parseFloat(document.getElementById('bodyweight').value);
     const workoutType = document.querySelector('#workoutType select').value;
-    console.log(workoutType);
 
     // Create an array to hold all workouts (exercises with sets)
     const workout = [];
@@ -318,10 +317,9 @@ if(window.location.pathname.includes('add-exercise.html')){document.getElementBy
         });
 
         if (response.ok) {
-            const result = await response.json();
+            await response.json();
             messageContainer.textContent = 'Exercise added successfully!'; 
             messageContainer.style.color = 'green'; // Success message
-            console.log(result); // Log the response from the server
         } else {
             messageContainer.textContent = 'Failed to add exercise.'; // Error message
             messageContainer.style.color = 'red';

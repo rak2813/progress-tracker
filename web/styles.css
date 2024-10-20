@@ -202,12 +202,26 @@ button[type = "submit"] {
     margin-bottom: 30px;
 }
 
-.chart-container {
-    position: relative;
-    width: 100%; /* Full width */
-    height: 300px; /* Set a height for the chart, adjust as needed */
-    max-width: 600px; /* Optional: limit max width */
-    margin: auto; /* Center the chart horizontally */
+
+
+@media (max-width: 600px) {
+    li {
+        flex-direction: column; /* Stack items on smaller screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .textContainer {
+        text-align: left; /* Align text to the left on smaller screens */
+        font-size: 12px; /* Smaller font size on mobile */
+    }
+
+    .chart-container {
+        position: relative;
+        width: 100%; /* Full width */
+        height: 300px; /* Set a height for the chart, adjust as needed */
+        max-width: 600px; /* Optional: limit max width */
+        margin: auto; /* Center the chart horizontally */
+    }
 }
 
 
