@@ -202,14 +202,14 @@ button[type = "submit"] {
     margin-bottom: 30px;
 }
 
-.listItem {
-    cursor: pointer;
+.chart-container {
+    position: relative;
+    width: 100%; /* Full width */
+    height: 300px; /* Set a height for the chart, adjust as needed */
+    max-width: 600px; /* Optional: limit max width */
+    margin: auto; /* Center the chart horizontally */
 }
 
-.textContainer {
-    flex-grow: 1;
-    text-align: right;
-}
 
 
 
