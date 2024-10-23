@@ -60,32 +60,32 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 // Function to save session data to the backend
-// async function saveSession(sessionData) {
-//     const sessionId = getSessionIdFromUrl();
-//     let response;
-//     if(sessionId== null){
-//     response = await fetch(`${API_BASE_URL}/session`, { // Adjust the URL as needed
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(sessionData),
-//     });}else{
-//         response = await fetch(`${API_BASE_URL}/session/${sessionId}`, { // Adjust the URL as needed
-//             method: 'PUT',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(sessionData),
-//         });
-//     }
+async function saveSession(sessionData) {
+    const sessionId = getSessionIdFromUrl();
+    let response;
+    if(sessionId== null){
+    response = await fetch(`${API_BASE_URL}/session`, { // Adjust the URL as needed
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sessionData),
+    });}else{
+        response = await fetch(`${API_BASE_URL}/session/${sessionId}`, { // Adjust the URL as needed
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sessionData),
+        });
+    }
 
-//     if (response.ok) {
-//         console.log('Session saved successfully!');
-//     } else {
-//         console.error('Error saving session:', response.statusText);
-//     }
-// }
+    if (response.ok) {
+        console.log('Session saved successfully!');
+    } else {
+        console.error('Error saving session:', response.statusText);
+    }
+}
 
 function getSessionIdFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -222,10 +222,6 @@ if (window.location.pathname.includes('get-sessions.html')) {
 if (window.location.pathname.includes('get-sessions.html')) {
     window.onload = getSessions;
 }
-
-// if(window.location.pathname.includes('session-detail.html')){
-//     window.onload = populateSessionDetails;
-// }
 
 if (window.location.pathname.includes('session-detail.html')) {
     window.onload = () => {
