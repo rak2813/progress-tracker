@@ -11,6 +11,10 @@ export class SessionRepository{
         return this.sessionModel.find().sort({date: -1}).exec();
     }
 
+    async GetAllSessionsDates() {
+        return this.sessionModel.find().select('date').sort({ date: -1 }).exec();
+    }
+
     async GetSessionById(id:UUID){
         return this.sessionModel.findById(id);
     }

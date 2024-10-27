@@ -224,6 +224,27 @@ button[type = "submit"] {
     }
 }
 
+.streak {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.streak p {
+    font-size: 1; /* Slightly larger font size */
+    font-weight: bold;
+    color: rgb(195, 255, 0); /* Light color to match dark theme */
+    margin: 0;
+}
+
+#streak {
+    color: #ffffff; /* Accent color for the streak number */
+}
+
+.streak-container {
+    text-align: center;
+}
+
 
 
 

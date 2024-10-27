@@ -441,4 +441,18 @@ async function addExercise(exercisesContainer) {
     return exerciseDiv;
 }
 
+document.addEventListener('DOMContentLoaded', async function () {
+    const response = await fetch(`${API_BASE_URL}/user/streak`, { // Adjust the URL as needed
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }});
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const streak = await response.json();
+    document.getElementById('streak').textContent = streak;
+});
+
 

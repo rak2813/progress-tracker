@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { UUID } from 'crypto';
 import { UserService } from './user.service';
 
@@ -9,6 +9,11 @@ export class UserController {
     @Get(':id')
     GetUser(@Param('id')id: UUID){
         return this.userService.GetUser(id);
+    }
+
+    @Post('streak')
+    GetStreak(){
+        return this.userService.GetStreak();
     }
 
 }
