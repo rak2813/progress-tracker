@@ -15,10 +15,13 @@ export class UserService {
         const dates = sessions.map(session => session.date as unknown as Date);
         let streak = 0;
         let yDay = new Date(Date.now() - 86400000);
-        yDay.setUTCMilliseconds(0);
-        yDay.setUTCSeconds(0);
-        yDay.setUTCMinutes(0);
-        yDay.setUTCHours(0);
+        yDay.setUTCHours(0, 0, 0, 0);
+        let tDay = new Date(Date.now());
+        tDay.setUTCHours(0, 0, 0, 0);
+        // yDay = dates[0] == tDay ? tDay : yDay;
+        if(dates[0].getUTCDate() === tDay.getUTCDate()){
+            yDay = tDay;
+        }
         let i=0;
         while(true){
             if (yDay.getUTCDate() === dates[i].getUTCDate()) {

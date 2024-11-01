@@ -21,6 +21,7 @@ export class SessionService {
 
     async AddSession(sessionDto: SessionDto) {
         sessionDto.date = new Date(Date.now());
+        sessionDto.date.setUTCHours(0, 0, 0, 0);
         await this.UpdateExerciseStats(sessionDto);
         return this.sessionRepository.AddSession(sessionDto);
     }
@@ -29,6 +30,8 @@ export class SessionService {
         var response = await this.sessionRepository.GetSessionById(id);
         if(response==null) throw new NotFoundException("Cannot find session.");
         await this.UpdateExerciseStats(sessionDto);
+        sessionDto.date = new Date(Date.now());
+        sessionDto.date.setUTCHours(0, 0, 0, 0);
         return this.sessionRepository.UpdateSession(id, sessionDto);
     }
 
