@@ -1,4 +1,5 @@
-const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
+// const API_BASE_URL = 'https://painful-merna-rak2813-5768956c.koyeb.app';
+const API_BASE_URL = 'http://43.204.144.84:3000';
 // const API_BASE_URL = 'http://localhost';
 
 // Logging a new session
